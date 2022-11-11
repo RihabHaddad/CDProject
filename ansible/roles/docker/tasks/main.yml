@@ -2,9 +2,9 @@
 # tasks file for docker
 - name: create image docker
   docker_image:
-   name: APPCDPro
+   name: devops
    build: 
-    path: /var/lib/jenkins/workspace/test
+    path: /var/lib/jenkins/workspace/devops
     pull: no
    source: build
    state: present
@@ -12,7 +12,7 @@
 - name: run container docker
   docker_container:
    name: CDProject_container
-   image: APPCDPro:latest
+   image: devops:latest
    state: started
    recreate: true
    ports:
