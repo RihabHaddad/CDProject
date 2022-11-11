@@ -1,6 +1,6 @@
-- hosts: localhost 
-  become: yes
-  become_user: root
-  become_method: sudo
-  roles:
-    - { role: prometheus_node_exporter}
+---
+    - hosts: localhost 
+      ##become: yes
+      gather_facts: true
+      roles:
+        - { role: prometheus_node_exporter}
