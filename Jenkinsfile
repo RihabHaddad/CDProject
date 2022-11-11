@@ -27,5 +27,14 @@ pipeline
             }
 
         }
+        
+                  stage('nodeexporter) {
+                                 steps {
+                                          script{
+                	sh "ansible-playbook ansible/node-exporter.yml -i ansible/inventory/host.yml "
+                }
+            }
+
+        }
     }
 }
