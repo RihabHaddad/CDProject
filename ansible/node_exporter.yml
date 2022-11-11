@@ -1,6 +1,8 @@
 ---
     - hosts: localhost 
-      ##become: yes
       gather_facts: true
+      ##become: true 
       roles:
         - { role: prometheus_node_exporter}
+
+
