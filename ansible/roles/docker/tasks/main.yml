@@ -4,7 +4,7 @@
   docker_image:
    name: APPCDPro
    build: 
-    path: /var/lib/jenkins/workspace/APPCDPro
+    path: /var/lib/jenkins/workspace/test
     pull: no
    source: build
    state: present
