@@ -1,7 +1,8 @@
 ---
-    - hosts: localhost 
-      gather_facts: true
-      ##become: true 
+    - hosts: node_exporter
+      become: yes
+      become_user: root
+      become_method: sudo
       roles:
         - { role: node_exporter}
 
