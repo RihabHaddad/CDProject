@@ -1,6 +1,7 @@
 ---
 # tasks file for node_exporter
 - name: Create the node_exporter group
+  become: yes
   group:
     name: "{{groupId}}"
     state: present
