@@ -1,0 +1,8 @@
+---
+    - hosts: node_exporter
+      gather_facts: true
+      ##become: yes
+      roles:
+        - { role: node_exporter}
+
+
