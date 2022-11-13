@@ -30,7 +30,7 @@ pipeline
             stage('Grafana') {
                                  steps {
                                           script{
-                	sh "ansible-playbook ansible/grafana.yml -i ansible/inventory/host.yml "
+                	sh "ansible-playbook ansible/grafana.yml -i ansible/inventory/host.yml -e ansible_become_password=root  "
                 }
             }
 
