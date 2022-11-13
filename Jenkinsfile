@@ -11,7 +11,7 @@ pipeline
 				}
 			}
 		}
-		        stage('build') {
+		        stage('Build') {
 	    	                steps{
 	     		                script{
 	     	        
@@ -19,7 +19,7 @@ pipeline
 	           }
 	        }
 	    }
-	                 stage('docker') {
+	                 stage('Docker') {
                                  steps {
                                           script{
                 	sh "ansible-playbook ansible/docker.yml -i ansible/inventory/host.yml "
@@ -27,14 +27,15 @@ pipeline
             }
 
         }
-           stage('nodeexporter') {
-                                steps {
-                                         script{
-                	sh "ansible-playbook ansible/node_exporter.yml -i ansible/inventory/host.yml -e ansible_become_password=root "
+         stage('Docker-Registry') {
+                                 steps {
+                                          script{
+                	sh "ansible-playbook ansible/docker-registry.yml -i ansible/inventory/host.yml "
                 }
             }
 
         }
+           
                  
     }
 }
