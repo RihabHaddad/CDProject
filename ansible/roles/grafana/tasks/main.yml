@@ -1,9 +1,26 @@
 ---
 # tasks file for garfana
-- name: Install grafana
+- name: Install required packages
   apt:
-    name: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-{{ version }}-1.x86_64.rpm
-    state: latest
+    name:
+      - gnupg2
+      - curl
+      - software-properties-common
+    state: present
+- name: Add the Grafana GPG key and APT repository
+  shell: |
+    curl https://packages.grafana.com/gpg.key | sudo apt-key add -
+    add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+  args:
+    warn: no   
+- name: Install the grafana package
+  apt:
+    name: grafana
+    state: present
+    update_cache: yes
+  notify:
+    - Start grafana
+    - Enable grafana
 
 - name: "Grafana configuration file copy"
   template:
