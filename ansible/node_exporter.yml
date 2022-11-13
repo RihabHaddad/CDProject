@@ -2,7 +2,9 @@
     - hosts: node_exporter
       gather_facts: true
       ##become: yes
+      become_user: root
+      become_method: sudo
       roles:
         - { role: node_exporter}
 
-
+   
