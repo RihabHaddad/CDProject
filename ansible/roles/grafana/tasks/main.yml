@@ -1,7 +1,7 @@
 ---
 # tasks file for garfana
 - name: Install required packages
-  apt:
+  sudo apt:
     name:
       - gnupg2
       - curl
@@ -14,7 +14,7 @@
   args:
     warn: no   
 - name: Install the grafana package
-  apt:
+  sudo apt:
     name: grafana
     state: present
     update_cache: yes
