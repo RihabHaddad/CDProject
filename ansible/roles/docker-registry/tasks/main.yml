@@ -1,7 +1,12 @@
 ---
 # tasks file for docker-registry
+
+- name: Log into DockerHub
+  docker_login:
+      username: rihab26
+      password: devOps2022&&
 - name: tag and push
-   docker_image:
+  docker_image:
       name: devops
       repository: rihab26/devops
       tag: latest
