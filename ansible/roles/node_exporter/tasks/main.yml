@@ -1,18 +1,22 @@
 ---
 # tasks file for node_exporter
-- name: Creating node_exporter user group
-  group: name="{{groupId}}"
-  become: yes
-  
-- name: Creating node_exporter user
+- name: Create the node_exporter group
+  group:
+    name: "{{groupId}}"
+    state: present
+    system: true
+  when: groupId != "root"
+
+- name: Create the node_exporter user
   user:
     name: "{{userId}}"
-    group: "{{groupId}}"
-    system: yes
-    shell: "/sbin/nologin"
-    comment: "{{userId}} nologin User"
-    createhome: "no"
-    state: present
+    groups: "{{groupId}}"
+    append: true
+    shell: /usr/sbin/nologin
+    system: true
+    create_home: false
+    home: /  
+
 
 - name: Install prometheus node exporter
   unarchive:
