@@ -3,4 +3,4 @@
   become_user: root
   become_method: sudo
   roles:
-    - grafana
+     - { role: grafana}
