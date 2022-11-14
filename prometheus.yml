@@ -1,0 +1,22 @@
+
+scrape_configs:
+- job_name: prometheus
+scrape_interval: 5s
+static_configs:
+- targets:
+- prometheus:9090
+- node-exporter:9100
+- pushgateway:9091
+- cadvisor:8080
+- job_name: Docker Job
+metrics_path: /metrics
+static_configs:
+- targets: ['192.168.1.18:9999'] 
+- job_name: AppCDPRO
+scrape_interval: 5s
+static_configs:
+- targets: ['192.168.1.18:4200']
+- job_name: jenkins
+metrics_path: /prometheus
+static_configs:
+- targets: ['192.168.1.18:8080']
